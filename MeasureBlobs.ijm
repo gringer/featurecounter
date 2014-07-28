@@ -40,10 +40,13 @@ run("Despeckle");
 run("Remove Outliers...", "radius=25 threshold=50 which=Dark");
 run("Remove Outliers...", "radius=25 threshold=50 which=Bright");
 run("Watershed");
-run("Set Measurements...", "area mean standard modal min centroid center perimeter bounding fit shape feret's integrated median skewness kurtosis display redirect=None decimal=3");
+run("Set Measurements...", "area mean standard modal min centroid center perimeter "+
+    "bounding fit shape feret's integrated median skewness kurtosis display "+
+    "redirect=None decimal=3");
 makeRectangle(selX, selY, selW, selH);
 run("Clear Results");
-run("Analyze Particles...", "size=0.20-Infinity circularity=0-1.00 show=[Overlay Outlines] display exclude clear");
+run("Analyze Particles...", "size=0.20-Infinity circularity=0-1.00 "+
+    "show=[Overlay Outlines] display exclude clear");
 if(Overlay.size > 0){
   Overlay.copy();
 //  close("R-B_" + oldName);
