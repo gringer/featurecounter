@@ -1,0 +1,20 @@
+// subtract the blue channel from an image
+run("Select None");
+oldName = getInfo("image.filename");
+fName = "dup_" + oldName;
+run("Duplicate...", "title=[" + fName + "]");
+selectWindow(fName);
+run("Split Channels");
+selectWindow(fName + " (green)");
+close();
+selectWindow(fName + " (red)");
+run("Enhance Contrast...", "saturated=0 normalize equalize");
+selectWindow(fName + " (blue)");
+run("Enhance Contrast...", "saturated=0 normalize equalize");
+imageCalculator("Subtract create", fName + " (red)",fName + " (blue)");
+selectWindow(fName + " (red)");
+close();
+selectWindow(fName + " (blue)");
+close();
+selectWindow("Result of " + fName + " (red)");
+rename("R-B_" + oldName);
