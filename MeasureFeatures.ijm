@@ -1,5 +1,8 @@
 requires("1.47o");
 
+ht = getHeight();
+wd = getWidth();
+
 oldName = getInfo("image.filename");
 oldDir = getDirectory("image");
 
@@ -11,6 +14,40 @@ if(selectionType != 0){
   run("Select None");
 }
 getSelectionBounds(selX, selY, selW, selH);
+run("Select None");
+
+if((selW == wd) && (selH == ht)){
+  // no pre-existing selection, so try to exclude ruler
+  makeRectangle(wd/3, 0, wd/3, ht);
+  run("Duplicate...", "title=[Ruler Profile Image]");
+  selectWindow("Ruler Profile Image");
+  run("8-bit");
+  setAutoThreshold("Default dark");
+  run("Convert to Mask");
+  makeRectangle(0, 0, wd/3, ht);
+  setKeyDown("alt");
+  p1 = getProfile();
+  setKeyDown("none");
+  rectTop = 0;
+  rectBottom = ht;
+  // scan from middle outwards, stop when an edge is hit
+  for(i = p1.length/2; i >= 0; i--){
+    if(p1[i] > 120){
+      rectTop = i;
+      break;
+    }
+  }
+  for(i = p1.length/2; i < ht; i++){
+    if(p1[i] > 120){
+      rectBottom = i;
+      break;
+    }
+  }
+  close("Ruler Profile Image");
+  run("Select None");
+  selY = rectTop;
+  selH = (rectBottom-rectTop);
+}
 
 if(!is("grayscale")){
   // background subtraction hasn't been carried out first, so do that
@@ -32,11 +69,12 @@ run("Duplicate...", "title=[" + greyName + "]");
 
 wait(100);
 selectWindow("R-B_" + oldName);
-setAutoThreshold("Default bright");
-setOption("BlackBackground", false);
+setAutoThreshold("Intermodes dark");
+//setOption("BlackBackground", false);
 run("Convert to Mask");
-run("Invert");
-run("Despeckle");
+//run("Invert");
+run("Erode");
+run("Dilate");
 run("Remove Outliers...", "radius=25 threshold=50 which=Dark");
 run("Remove Outliers...", "radius=25 threshold=50 which=Bright");
 run("Watershed");
