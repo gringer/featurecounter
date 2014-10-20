@@ -69,14 +69,14 @@ run("Duplicate...", "title=[" + greyName + "]");
 
 wait(100);
 selectWindow("R-B_" + oldName);
-setAutoThreshold("Intermodes dark");
-//setOption("BlackBackground", false);
+setMinAndMax(60,200); // remove background noise
+setThreshold(75, 255);
+setOption("BlackBackground", false);
 run("Convert to Mask");
-//run("Invert");
-run("Erode");
+//run("Erode");
+run("Remove Outliers...", "radius=20 threshold=50 which=Dark");
+run("Remove Outliers...", "radius=20 threshold=50 which=Bright");
 run("Dilate");
-run("Remove Outliers...", "radius=25 threshold=50 which=Dark");
-run("Remove Outliers...", "radius=25 threshold=50 which=Bright");
 run("Watershed");
 run("Set Measurements...", "area mean standard modal min centroid center perimeter "+
     "bounding fit shape feret's integrated median skewness kurtosis display "+

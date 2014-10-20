@@ -52,7 +52,6 @@ run("Duplicate...", "title=[" + fName + "]");
 selectWindow(fName);
 run("Enhance Contrast...", "saturated=0 normalize equalize");
 run("8-bit");
-setAutoThreshold("Default");
 setThreshold(0, 192);
 setOption("BlackBackground", false);
 run("Convert to Mask");
