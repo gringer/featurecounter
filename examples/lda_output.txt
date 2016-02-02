@@ -1,0 +1,79 @@
+Call:
+lda(as.formula(paste(feature.calling.name, "~", paste(c(feature.measure.names, 
+    feature.measure.names.sqrd), collapse = "+"))), data = dat, 
+    na.action = "na.omit")
+
+Prior probabilities of groups:
+      Ad      nAd 
+0.401192 0.598808 
+
+Group means:
+           Area    Perim.     Mean   StdDev     Mode       Min      Max   Median
+Ad   0.42718743 0.8822269 87.07146 21.95806 77.24550 0.3136568 149.8702 89.07819
+nAd -0.05862449 0.6867249 75.90690 20.10470 67.87009 0.6367463 126.6977 76.96228
+         Skew      Kurt     Major       Minor    Angle     Circ.        AR     Round
+Ad  0.6037700 0.6859390 0.3476616  0.18443281 94.14200 0.5919961 0.1632250 0.7029109
+nAd 0.6349748 0.4985332 0.1201320 -0.07384013 92.71545 0.4847669 0.1939664 0.6590262
+     Solidity     Feret FeretAngle    MinFeret   IntDen RawIntDen Area.sqrd
+Ad  0.9094113 0.3777373   94.40970  0.21138044 2.362562  5.468993 0.4273390
+nAd 0.8330854 0.1716891   95.31429 -0.02112456 1.814203  4.920369 0.2291959
+    Perim..sqrd Mean.sqrd StdDev.sqrd Mode.sqrd  Min.sqrd Max.sqrd Median.sqrd
+Ad    0.8403489  7740.010    521.6102  7522.678 0.4703541 22946.38    8144.994
+nAd   0.5420145  5974.948    456.4076  5583.939 0.9289486 16667.51    6149.672
+    Skew.sqrd Kurt.sqrd Major.sqrd Minor.sqrd Angle.sqrd Circ..sqrd    AR.sqrd
+Ad  0.3730154 0.5045983 0.18502558 0.09698188   12736.73  0.3663543 0.03603349
+nAd 0.4079652 0.2845763 0.07410508 0.06461722   12209.30  0.2547660 0.04954490
+    Round.sqrd Solidity.sqrd Feret.sqrd FeretAngle.sqrd MinFeret.sqrd IntDen.sqrd
+Ad   0.5148014     0.8296376 0.20408631        12640.26    0.10370389    5.856129
+nAd  0.4576032     0.6985376 0.08587013        12385.54    0.05673168    3.511322
+    RawIntDen.sqrd
+Ad        30.18340
+nAd       24.43024
+
+Coefficients of linear discriminants:
+                          LD1
+Area             9.273674e+01
+Perim.          -2.318166e+01
+Mean            -6.641273e-01
+StdDev           3.759683e-02
+Mode             1.406891e-02
+Min              6.810776e-01
+Max             -2.729396e-02
+Median           1.088333e-01
+Skew            -5.424676e+00
+Kurt            -3.605926e+00
+Major            2.693858e+01
+Minor           -1.860236e+02
+Angle           -8.948542e-03
+Circ.           -2.323565e+01
+AR              -8.413410e+00
+Round            7.798235e+01
+Solidity         2.640663e+01
+Feret            3.486547e+00
+FeretAngle       1.223431e-02
+MinFeret        -3.136778e+00
+IntDen           4.467485e+01
+RawIntDen        5.455781e+00
+Area.sqrd        2.059529e+02
+Perim..sqrd      1.522574e+00
+Mean.sqrd        2.516634e-03
+StdDev.sqrd     -3.675212e-04
+Mode.sqrd       -1.110954e-04
+Min.sqrd        -5.952437e-01
+Max.sqrd         4.075867e-05
+Median.sqrd     -4.664397e-04
+Skew.sqrd        2.785142e+00
+Kurt.sqrd        5.050282e-01
+Major.sqrd      -4.111206e+02
+Minor.sqrd      -4.161458e+02
+Angle.sqrd       4.920347e-05
+Circ..sqrd       1.273794e+01
+AR.sqrd          1.536922e+02
+Round.sqrd      -1.837411e+01
+Solidity.sqrd   -1.882816e+01
+Feret.sqrd       2.763708e+00
+FeretAngle.sqrd -6.716564e-05
+MinFeret.sqrd    8.250185e+00
+IntDen.sqrd     -1.560759e+00
+RawIntDen.sqrd  -5.341277e-01
+
